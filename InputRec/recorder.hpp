@@ -19,6 +19,7 @@
 #include <time.h>
 
 //C++ Includes
+#include <string>
 #include <deque>
 #include <chrono>
 
@@ -39,6 +40,7 @@ class recorder {
 		void record_stop();
 
 		void record_capture(const T &);
+		void record_save(const string & = "recording.inp");
 
 	private:
 		struct ev_pair {
@@ -50,8 +52,6 @@ class recorder {
 			chrono::high_resolution_clock::time_point ts;
 			T val;
 		};
-
-		void process();
 
 		chrono::system_clock::time_point sys_start;
 		chrono::high_resolution_clock::time_point start;

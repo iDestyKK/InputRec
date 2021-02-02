@@ -42,8 +42,6 @@ void recorder<T>::record_start() {
 template <typename T>
 void recorder<T>::record_stop() {
 	end = chrono::high_resolution_clock::now();
-
-	process();
 }
 
 /*
@@ -58,13 +56,13 @@ void recorder<T>::record_capture(const T &v) {
 }
 
 /*
- * process
+ * record_save
  *
  * Processes the times and events. Archives them into a file.
  */
 
 template <typename T>
-void recorder<T>::process() {
+void recorder<T>::record_save(const string &fname) {
 	FILE    *fp;
 	char     head[5] = "IREC";
 	uint32_t ver = 0;
@@ -83,7 +81,7 @@ void recorder<T>::process() {
 	).count();
 
 	//Open the file for writing
-	fp = fopen("recording.inp", "wb");
+	fp = fopen(fname.c_str(), "wb");
 
 	//Write header information (24)
 	fwrite( head  , sizeof(char    ), 4, fp);  /* Magic Number (4) */
