@@ -15,7 +15,7 @@
 using namespace std;
 
 int main() {
-    recorder<int> rec;
+	recorder<int> rec;
 	int i;
 
 	rec.record_start();
