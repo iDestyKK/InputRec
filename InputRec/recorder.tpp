@@ -68,6 +68,7 @@ void recorder<T>::record_save(const string &fname) {
 	uint32_t ver = 0;
 	int64_t  s_time, d_time, ts;
 	uint64_t e_cnt;
+	string fpath;
 
 	typename deque<ev_pair>::iterator it;
 
@@ -80,8 +81,18 @@ void recorder<T>::record_save(const string &fname) {
 		end - start
 	).count();
 
+	ostringstream oss;
+	oss.clear();
+
+	oss << chrono::duration_cast<chrono::nanoseconds>(
+		sys_start.time_since_epoch()
+	).count();
+
+	fpath = fname;
+	fpath += oss.str();
+
 	//Open the file for writing
-	fp = fopen(fname.c_str(), "wb");
+	fp = fopen(fpath.c_str(), "wb");
 
 	//Write header information (24)
 	fwrite( head  , sizeof(char    ), 4, fp);  /* Magic Number (4) */
