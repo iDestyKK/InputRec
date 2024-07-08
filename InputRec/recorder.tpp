@@ -90,6 +90,7 @@ void recorder<T>::record_save(const string &fname) {
 
 	fpath = fname;
 	fpath += oss.str();
+	fpath += ".inp";
 
 	//Open the file for writing
 	fp = fopen(fpath.c_str(), "wb");

@@ -43,7 +43,7 @@ LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
                         printf(" Processing...");
 
                         rec_kb.record_stop();
-                        rec_kb.record_save();
+                        rec_kb.record_save("recording_");
 
                         printf("\rStarted recording... Done.        \n");
                     }
