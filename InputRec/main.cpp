@@ -51,7 +51,7 @@ LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
                     recording = !recording;
                 }
                 else
-                    rec_kb.record_capture(0x100 & p->vkCode);
+                    rec_kb.record_capture(0x100 | p->vkCode);
 
                 break;
 
